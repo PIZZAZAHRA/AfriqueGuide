@@ -90,11 +90,18 @@ async function renderPreciseAfricaMap(openPage) {
   const topoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
   const namesUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.tsv";
 
-  const topology = await fetch(topoUrl).then(r => r.json());
+ const topoRes = await fetch(topoUrl);
+if (!topoRes.ok) throw new Error("Failed to load topojson: " + topoRes.status);
+const topology = await topoRes.json();
+
 
   let tsvText = "";
   try {
-    tsvText = await fetch(namesUrl).then(r => r.text());
+    const namesRes = await fetch(namesUrl);
+if (namesRes.ok) {
+  tsvText = await namesRes.text();
+}
+
   } catch (e) {}
 
   const nameById = new Map();
