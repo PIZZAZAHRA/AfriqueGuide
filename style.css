@@ -12,12 +12,12 @@
 }
 /* ===== CITY IMAGES SIZE FIX ===== */
 .item-card img{
-  width: 265px;       /* ≈ 7 cm */
-  height: 265px;      /* ≈ 7 cm */
-  object-fit: cover;  /* crop without stretching */
+  width: 265px;          /* ≈ 7 cm */
+  height: 265px;         /* ≈ 7 cm */
+  object-fit: cover;     /* crop without stretching */
   border-radius: 5px;
   display: block;
-  margin: 0 
+  margin: 0 auto 12px;   /* center + spacing */
   border: 1px solid var(--border);
 }
 
